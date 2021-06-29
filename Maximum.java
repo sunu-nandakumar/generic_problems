@@ -2,48 +2,41 @@ package com.generic;
 
 public class Maximum {
 	//calculating Maximum of Three Numbers using CompareTo method
-		public static int checkMaximum(Integer x, Integer y, Integer z) {
-			Integer max = x;
+	// Claculating Maximum of 3 Integers, Floating point, Strings
+		public static <T extends Comparable<T>> T checkMaximum(T x, T y, T z) {
+			T max = x;
 			if(y.compareTo(max) > 0) {
-				max = y; // y is largest now
+				max = y; // y is maximum now
 			}
 			if(z.compareTo(max) > 0) {
-				max = z; // z is largest now
-			}
-			return max; // returns maximum number
-		}
-		
-		public static float checkMaximum(Float d, Float e, Float f) {
-			Float max = d;
-			if(e.compareTo(max) > 0) {
-				max = e; // e is largest now
-			}
-			if(f.compareTo(max) > 0) {
-				max = f; // f is largest
-			}
-			return max; // // returns maximum number
-		}
-		// Calculating maximum of 3 Strings
-		public static String checkMaximum(String s1, String s2, String s3) {
-			String max = s1;
-			if(s2.compareTo(max) > 0) {
-				max = s2; // s2 is Maximum now 
-			}
-			if(s3.compareTo(max) > 0) {
-				max = s3; // s3 is Maximum now
+				max = z; // z is maximum now
 			}
 			return max; // returns maximum value
 		}
-
-
-		public static void main(String[] args) {
-			int value = checkMaximum(10,23,15);
-			float result = checkMaximum(12.5f, 13.4f, 22.0f);
-			String fruitsMax = checkMaximum("Apple", "Peach", "Banana");
-			System.out.println(value);
-			System.out.println(result);
-			System.out.println(fruitsMax);
+		
+		public static <T extends Comparable<T>> T checkMaximum_With_MoreThan_ThreeParameters(T... elements) {
+			T max = elements[0];
+			for(T maximumParametereter : elements) {
+				if(maximumParametereter.compareTo(max) > 0) {
+					max = maximumParametereter;
+				}
+			}
+			return max;
 		}
 
+		public static void main(String[] args) {
+			Integer value = checkMaximum(10,23,15);
+			Double result = checkMaximum(12.5, 13.4, 22.0);
+			String fruitMax = checkMaximum("Apple", "Peach", "Banana");
+			Integer valueForThanThree = checkMaximum_With_MoreThan_ThreeParameters(10,23,15,20,24);
+			Double resultForThanThree = checkMaximum_With_MoreThan_ThreeParameters(12.5, 13.4, 22.0,24.0,20.8);
+			String fruitForThanThree = checkMaximum_With_MoreThan_ThreeParameters("Apple", "Peach", "Banana", "Mango", "Orange"); 
+			System.out.println(value);
+			System.out.println(result);
+			System.out.println(fruitMax);
+			System.out.println(valueForThanThree);
+			System.out.println(resultForThanThree);
+			System.out.println(fruitForThanThree);
+		}
 
 }
